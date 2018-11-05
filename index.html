@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- CSS Imports -->
+    <!-- <script src='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.css' rel='stylesheet' /> -->
+    <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.2.3/leaflet.draw.css" />
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/style.css">
+
+
+  </head>
+  <body>
+    <!--Left Panel-->
+    <div id = "header">
+      <p id = "header_text" style = "color: white;"><strong>The Bay Area Tracts &nbsp; </strong></p>
+    </div>
+    <div id="map" style="position: absolute; right:0; left: 0; top: 0; bottom: 0; z-index:10;">  </div>
+      <!-- <div class="dropdown1">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Change BaseMap
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li id = "dark"><a href="#">Dark</a></li>
+              <li id = "light"><a href="#">Light</a></li>
+              <li id = "antique"><a href="#">Antique</a></li>
+              <li id = "eco"><a href="#">Eco</a></li>
+              <li id = "midnight"><a href="#">Midnight</a></li>
+          </ul>
+
+      </div> -->
+      <!-- <div class="dropdown2">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Change Scale
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li id = "national"><a href="#">National</a></li>
+              <li id = "bogota"><a href="#">Bogota</a></li>
+          </ul>
+      </div> -->
+      <!-- <div class="chartsarea">
+        <canvas class="charts" id="myChart1" width="300" height="200"></canvas>
+        <br>
+        <canvas class="charts" id="myChart2" width="300" height="200"></canvas>
+      </div> -->
+    <!-- Javascript Imports -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
+    <script
+			  src="https://code.jquery.com/jquery-2.2.4.min.js"
+			  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+			  crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://npmcdn.com/@turf/turf/turf.min.js"></script>
+    <!-- <script src="js/MidTerm-setup.js"></script> -->
+    <!-- <script src="js/bootstrap.js"></script> -->
+    <script src="js/decode.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
