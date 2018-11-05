@@ -1,7 +1,7 @@
 //testing out the google fushion table
 var map = L.map('map', {
   center: [37.755489,-122.407885],
-  zoom: 10
+  zoom: 7.5
 });
 
 var Style = 'dark';
@@ -129,10 +129,33 @@ $('#satellite').click(function(){
     });
 
 
+//DEFINE THE FADING AND HIGHLIGHTING EFFECT WHEN CLICKED ON LAYERS
+    var samelook = {
+      'color': '#E0903F',
+      'opacity': 0.01,
+    };
+
+    var fadeout = {
+      'opacity': 0.01,
+    };
+
+    var highlight = {
+      'color':'#416FEA',
+      'opacity': 0.2,
+    };
+
+    var maskin = {
+      'color':'#FF0000',
+    };
+
+    var maskout = {
+      'display':'none',
+    };
+
 // 2. CREATE VARIABLES
 // 2.1 DATA SOURCE URLS
   //THE CLEANED DATASET
-  var censustract = "https://github.com/wenhaowuuu/BayArea_tracts/blob/master/data/BayArea_Tracts.geojson";
+  var censustract = "https://raw.githubusercontent.com/wenhaowuuu/BayArea_tracts/master/data/BayArea_Tracts.geojson?token=AWa3upMv1_cJZs0NaGQpHWCWX3769xvCks5b6SR_wA%3D%3D";
 
   var tracts = [];
 
@@ -163,7 +186,7 @@ $('#satellite').click(function(){
         console.log("parsed");
         layerMappedPolygons = L.geoJson(tracts,
           {
-            style: {opacity:0.4,width:0.5,color:'#E0903F'},
+            style: {opacity:0.8,width:0.05,color:'#FF8C00'},
             pointToLayer: function (feature, latlng) {
               return new L.Polygon(latlng, {
               });
