@@ -132,68 +132,127 @@ $('#satellite').click(function(){
 // 2. CREATE VARIABLES
 // 2.1 DATA SOURCE URLS
   //THE CLEANED DATASET
-  var censustract = "";
+  var censustract = "https://github.com/wenhaowuuu/BayArea_tracts/blob/master/data/BayArea_Tracts.geojson";
 
-  var muni_clean = "https://raw.githubusercontent.com/wenhaowuuu/ProjectDataX/master/data/nt_muni_joined_clean.geojson";
+  var tracts = [];
 
-  // ADM
-  var Guatemala = "https://raw.githubusercontent.com/wenhaowuuu/ProjectDataX/master/data/guatemala.geojson?token=AWa3ujj3WJDeoABdZInPIhnTSYkS3B5Kks5Zd5vrwA%3D%3D";
-  var Honduras = "https://raw.githubusercontent.com/wenhaowuuu/ProjectDataX/master/data/Honduras.geojson?token=AWa3uvKtwxzSEa1dGdu8oqlVEMSPY5alks5Zd5xEwA%3D%3D";
-  var Salvador = "https://raw.githubusercontent.com/wenhaowuuu/ProjectDataX/master/data/SalVardo.geojson?token=AWa3us5Y4fPzPzYtApgHmkKpUFki0Dekks5Zd5w0wA%3D%3D";
-  var department = "https://raw.githubusercontent.com/wenhaowuuu/ProjectDataX/master/data/dept_joinbase.geojson?token=AWa3ulA7r0EP6hvXnzERqDWlb0C1DWkeks5Zd5HUwA%3D%3D";
+  // var muni_clean = "https://raw.githubusercontent.com/wenhaowuuu/ProjectDataX/master/data/nt_muni_joined_clean.geojson";
+  //
+  // // ADM
+  // var Guatemala = "https://raw.githubusercontent.com/wenhaowuuu/ProjectDataX/master/data/guatemala.geojson?token=AWa3ujj3WJDeoABdZInPIhnTSYkS3B5Kks5Zd5vrwA%3D%3D";
+  // var Honduras = "https://raw.githubusercontent.com/wenhaowuuu/ProjectDataX/master/data/Honduras.geojson?token=AWa3uvKtwxzSEa1dGdu8oqlVEMSPY5alks5Zd5xEwA%3D%3D";
+  // var Salvador = "https://raw.githubusercontent.com/wenhaowuuu/ProjectDataX/master/data/SalVardo.geojson?token=AWa3us5Y4fPzPzYtApgHmkKpUFki0Dekks5Zd5w0wA%3D%3D";
+  // var department = "https://raw.githubusercontent.com/wenhaowuuu/ProjectDataX/master/data/dept_joinbase.geojson?token=AWa3ulA7r0EP6hvXnzERqDWlb0C1DWkeks5Zd5HUwA%3D%3D";
 
-
-  var PrimaryRoads = [ ];
-  var SecondaryRoads = [ ];
-  var TertiaryRoads = [ ];
-  var UrbanRoads = [ ];
-  var RuralRoads = [ ];
-
-  var Hospitals = [ ];
-  var Clinics = [ ];
+  //
+  // var PrimaryRoads = [ ];
+  // var SecondaryRoads = [ ];
+  // var TertiaryRoads = [ ];
+  // var UrbanRoads = [ ];
+  // var RuralRoads = [ ];
+  //
+  // var Hospitals = [ ];
+  // var Clinics = [ ];
 
 
   //PRELOAD THE FUNCTIONS
-    // $(document).ready(function(){
-    //   $.ajax(muni_clean).done(function(data) {
-    //     parsedData00 = JSON.parse(data);
-    //     console.log(parsedData00);
-    //     console.log("parsed00");
-    //     layerMappedPolygons = L.geoJson(parsedData00,
-    //       {
-    //         style: {opacity:0.4,width:0.5,color:'#E0903F'},
-    //         pointToLayer: function (feature, latlng) {
-    //           return new L.Polygon(latlng, {
-    //           });
-    //         },
-    //
-    //         onEachFeature: function(feature,layer){
-    //
-    //           layer.bindPopup(
-    //             "<b>Municipality Name: </b>" +
-    //             feature.properties.m_name +
-    //             "</br>" +
-    //
-    //             "<b>Department Name: </b>" +
-    //             feature.properties.d_name +
-    //             "</br>" +
-    //
-    //             "<b>Total Road Length: </b>" +
-    //             feature.properties.rd_length.toFixed(3) + " km" +
-    //             "</br>" +
-    //
-    //             "<b>Road Density: </b>" +
-    //             feature.properties.rd_density.toFixed(3) + " per square km" +
-    //             "</br>" +
-    //
-    //             "</br>" +
-    //             "<b>Data Collected Year: </b>" +
-    //             feature.properties.year
-    //           )
-    //
-    //          }
-    //         }).addTo(map);
-    //         layerMappedPolygons.eachLayer(eachFeatureFunction);
-    //         // console.log(layerMappedPolygons[0].id);
-    //       })
-    //     });
+    $(document).ready(function(){
+      $.ajax(censustract).done(function(data) {
+        tracts = JSON.parse(data);
+        console.log(tracts);
+        console.log("parsed");
+        layerMappedPolygons = L.geoJson(tracts,
+          {
+            style: {opacity:0.4,width:0.5,color:'#E0903F'},
+            pointToLayer: function (feature, latlng) {
+              return new L.Polygon(latlng, {
+              });
+            },
+
+            onEachFeature: function(feature,layer){
+
+              layer.bindPopup(
+                "<b>Tract ID: </b>" +
+                feature.properties.ID +
+                "</br>"
+
+                // "<b>Department Name: </b>" +
+                // feature.properties.d_name +
+                // "</br>" +
+                //
+                // "<b>Total Road Length: </b>" +
+                // feature.properties.rd_length.toFixed(3) + " km" +
+                // "</br>" +
+                //
+                // "<b>Road Density: </b>" +
+                // feature.properties.rd_density.toFixed(3) + " per square km" +
+                // "</br>" +
+                //
+                // "</br>" +
+                // "<b>Data Collected Year: </b>" +
+                // feature.properties.year
+              )
+             }
+            }).addTo(map);
+            layerMappedPolygons.eachLayer(eachFeatureFunction);
+            // console.log(layerMappedPolygons[0].id);
+          })
+        });
+
+        var eachFeatureFunction = function(layer) {
+          var id = L.stamp(layer);
+          layer.on('click', function (event) {
+            console.log(layer.feature.properties);
+
+             //TO ADD THE RE-CLICK THEN DE-SELECT FUNCTION
+             //you can't really do this because the number of times clicked is not stored with the layer itself.
+             //come back to this later!
+            //  if (numberofClicks!=null){
+            //    console.log("selected again?");
+            //    // second time click
+            //    numberofClicks = numberofClicks + 1;
+            //    console.log("selected again!");
+            //    if (numberofClicks % 2 == 0){
+            //      layer.hide();
+            //    }
+            //    else {
+            //      layer.show();
+            //    }
+             //
+            //  }
+
+            //  else {
+
+               // first time click
+               var numberofClicks = 0;
+               numberofClicks = numberofClicks + 1;
+               console.log(numberofClicks);
+
+                //  BELOW WOULD PLACE AN AERIAL ON, BUT NOT REALLY WORKING,
+                // it would become VERY VERY VERY SLOW to load when the following section is released!!!
+
+                // just like the charts going on the sidebar
+
+                $('.locationmap').append(img);
+                console.log("appended0");
+                console.log(img);
+
+
+                 map.fitBounds(layer.getBounds(),{
+                            padding: [80,80]
+                          });
+                 order = order + 1;
+                 console.log(order);
+
+                //HIGHLIGHT THE MAP CLICKED
+
+                layerMappedPolygons.setStyle(fadeout);
+
+                layer.setStyle(highlight);
+
+                $('#hidemap').click(function(){
+                  layer.setStyle(samelook);
+                });
+
+             }
+         )};
